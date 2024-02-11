@@ -44,6 +44,7 @@ export default function ImagePicker({ label, name }) {
           //   multiple
           accept="image/png , image/jpeg"
           onChange={handleImageChange}
+          required
         />
         <button
           className={classes.button}
