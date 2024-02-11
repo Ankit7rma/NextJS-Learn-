@@ -35,7 +35,7 @@ export default function ImagePicker({ label, name }) {
             <p>No Image Picked</p>
           )}
         </div>
-        <input
+        {/* <input
           ref={imageInput}
           className={classes.input}
           id={name}
@@ -43,6 +43,16 @@ export default function ImagePicker({ label, name }) {
           name={name}
           //   multiple
           accept="image/png , image/jpeg"
+          onChange={handleImageChange}
+          required
+        /> */}
+        <input
+          className={classes.input}
+          type="file"
+          id={name}
+          accept="image/png, image/jpeg"
+          name={name}
+          ref={imageInput}
           onChange={handleImageChange}
           required
         />
