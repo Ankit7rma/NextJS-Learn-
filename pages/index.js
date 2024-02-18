@@ -6,7 +6,6 @@ export default function HomePage() {
   const featuredEvents = getFeaturedEvents();
   return (
     <div>
-      <h1>The HomePage </h1>
       <EventList items={featuredEvents} />
     </div>
   );
