@@ -7,8 +7,8 @@ export default function EventsSearch(props) {
   const monthInputRef = useRef();
   function submitHandler(event) {
     event.preventDefault();
-    const selectedYear = yearInputRef.current;
-    const selectedMonth = monthInputRef.current;
+    const selectedYear = yearInputRef.current.value;
+    const selectedMonth = monthInputRef.current.value;
 
     props.onSearch(selectedYear, selectedMonth);
   }
