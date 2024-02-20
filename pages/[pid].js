@@ -5,9 +5,9 @@ import fs from "fs/promises";
 
 export default function ProductDetailPage(props) {
   const { loadedProduct } = props;
-  if (!loadedProduct) {
-    return <p>Loading ...</p>;
-  }
+  //   if (!loadedProduct) {
+  //     return <p>Loading ...</p>;
+  //   }
   return (
     <Fragment>
       <h1>{loadedProduct.title}</h1>
@@ -41,6 +41,8 @@ export async function getStaticPaths() {
       //   { params: { pid: "p3" } },
     ],
     // if there are many a lots of pages and not all are in use so we generate only frequent use pages by paths and rest is fallback true
-    fallback: true,
+    // fallback: true,
+    // if sets "blocking we dont need that Loading... code "
+    fallback: "blocking",
   };
 }
