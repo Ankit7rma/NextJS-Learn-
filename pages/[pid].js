@@ -1,4 +1,7 @@
+import Link from "next/link";
 import React, { Fragment } from "react";
+import path from "path";
+import fs from "fs/promises";
 
 export default function ProductDetailPage(props) {
   const { loadedProduct } = props;
@@ -6,6 +9,7 @@ export default function ProductDetailPage(props) {
     <Fragment>
       <h1>{loadedProduct.title}</h1>
       <p>{loadedProduct.description}</p>
+      <Link href="/">Back</Link>
     </Fragment>
   );
 }
@@ -23,5 +27,16 @@ export async function getStaticProps(context) {
     props: {
       loadedProduct: product,
     },
+  };
+}
+
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { pid: "p1" } },
+      { params: { pid: "p2" } },
+      { params: { pid: "p3" } },
+    ],
+    fallback: false,
   };
 }
