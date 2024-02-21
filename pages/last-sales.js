@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import useSWR from "swr";
-export default function LastSalesPage() {
-  const [sales, setSales] = useState();
+export default function LastSalesPage(props) {
+  const [sales, setSales] = useState(props.sales);
   //   const [isLoading, setIsLoading] = useState(false);
   {
     //   useEffect(() => {
@@ -57,7 +57,7 @@ export default function LastSalesPage() {
     return <p>Failed to load data </p>;
   }
 
-  if (!data || !sales) {
+  if (!data && !sales) {
     return <p>Loading ...</p>;
   }
 
@@ -70,4 +70,20 @@ export default function LastSalesPage() {
       ))}
     </ul>
   );
+}
+// Just different syntax for the exact same execution as done on client side using useeffect its is in serverside
+export async function getStaticProps() {
+  const response = await fetch(
+    "https://next-js-dd898-default-rtdb.firebaseio.com/Sales.json"
+  );
+  const data = await response.json();
+  const transformedSales = [];
+  for (const key in data) {
+    transformedSales.push({
+      id: key,
+      username: data[key].username,
+      volume: data[key].volume,
+    });
+  }
+  return { props: { sales: transformedSales }, revalidate: 10 };
 }
