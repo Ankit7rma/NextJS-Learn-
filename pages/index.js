@@ -10,7 +10,17 @@ function HomePage() {
     const enteredEmail = emailInputRef.current.value;
     const enteredFeedback = feedbackInputRef.current.value;
 
-    fetch(); //{email:"ank@g,ail.com",text:"This is Post Req"}
+    const reqBody = { email: enteredEmail, text: enteredFeedback };
+    fetch("/api/feedback", {
+      method: "POST",
+      body: JSON.stringify(reqBody),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+    //{email:"ank@g,ail.com",text:"This is Post Req"}
   }
   return (
     <div>
