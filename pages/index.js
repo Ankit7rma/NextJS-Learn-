@@ -9,6 +9,8 @@ function HomePage() {
 
     const enteredEmail = emailInputRef.current.value;
     const enteredFeedback = feedbackInputRef.current.value;
+
+    fetch(); //{email:"ank@g,ail.com",text:"This is Post Req"}
   }
   return (
     <div>
